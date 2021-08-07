@@ -5,6 +5,14 @@ const apiKey = "c383e3d44afa86fefcbba737c342bfaf";
 const openWeatherMapURL = "https://api.openweathermap.org/data/2.5/weather";
 
 class WeatherModel {
+  Future<dynamic> getCityWeather(String cityName) async {
+    NetworkHelper networkHelper = NetworkHelper(
+        "$openWeatherMapURL?q=$cityName&appid=$apiKey&units=metric");
+
+    var weatherData = await networkHelper.getData();
+    return weatherData;
+  }
+
   Future<dynamic> getLocationWeather() async {
     Location location = Location();
     await location.getCurrentLocation();
@@ -40,7 +48,7 @@ class WeatherModel {
     if (temp > 25) {
       return 'It\'s 🍦 time';
     } else if (temp > 20) {
-      return 'Time for shorts and 👕';
+      return 'Time for 🩳 and 👕';
     } else if (temp < 10) {
       return 'You\'ll need 🧣 and 🧤';
     } else {
