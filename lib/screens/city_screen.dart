@@ -22,18 +22,28 @@ class _CityScreenState extends State<CityScreen> {
           child: Column(
             children: <Widget>[
               Align(
-                alignment: Alignment.topLeft,
+                alignment: AlignmentDirectional.topStart,
                 child: TextButton(
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.all(16.0),
+                  ),
                   onPressed: () {},
                   child: Icon(
                     Icons.arrow_back_ios,
                     size: 50.0,
+                    color: kArrowIconColor,
                   ),
                 ),
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
-                child: null,
+                child: TextField(
+                  style: TextStyle(color: Colors.black),
+                  decoration: kTextFieldInputDecoration,
+                  onChanged: (value) {
+                    print(value);
+                  },
+                ),
               ),
               TextButton(
                 onPressed: () {},
